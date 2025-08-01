@@ -14,11 +14,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-//import world.maryt.wheelchair_attack.events.AttackingScaling;
+import world.maryt.wheelchair_defense.events.DamageMimicking;
 
 @Mod(WheelChairDefense.MOD_ID)
 public class WheelChairDefense {
-    public static final String MOD_ID = "wheelchair_attack";
+    public static final String MOD_ID = "wheelchair_defense";
     private static final Logger LOGGER = LogUtils.getLogger();
     @SuppressWarnings("removal")
     public WheelChairDefense() {
@@ -28,7 +28,7 @@ public class WheelChairDefense {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         // Event Handlers
-//        MinecraftForge.EVENT_BUS.register(AttackingScaling.class);
+        MinecraftForge.EVENT_BUS.register(DamageMimicking.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
