@@ -18,8 +18,8 @@ public class DamageMimicking {
         if (!(target instanceof Player player)) return;
 
         // So /kill and void damage is not prevented
-        if (event.getSource().is(DamageTypes.GENERIC_KILL) && event.getAmount() == Float.MAX_VALUE) return;
         if (player.getY() < -64) return;
+        if (event.getSource().is(DamageTypes.GENERIC_KILL) && event.getAmount() > 1e200) return;
 
         // Backup the damage
         float rawDamageAmount = event.getAmount();
