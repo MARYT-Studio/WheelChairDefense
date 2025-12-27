@@ -8,6 +8,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import static world.maryt.wheelchair.Config.protectPlayersAtThisHP;
+import static world.maryt.wheelchair_defense.Config.debug;
 import static world.maryt.wheelchair_defense.Config.playerDefenseMethod;
 
 public class DamageMimicking {
@@ -40,8 +41,10 @@ public class DamageMimicking {
             player.setHealth(mimicHealth);
 
             // Debug info
-            player.sendSystemMessage(Component.nullToEmpty("Raw Damage: " + rawDamageAmount));
-            player.sendSystemMessage(Component.nullToEmpty("Mimic Health: " + mimicHealth));
+            if (debug) {
+                player.sendSystemMessage(Component.nullToEmpty("Raw Damage: " + rawDamageAmount));
+                player.sendSystemMessage(Component.nullToEmpty("Mimic Health: " + mimicHealth));
+            }
         }
     }
 }
