@@ -15,11 +15,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 import world.maryt.wheelchair_defense.events.DamageMimicking;
+import world.maryt.wheelchair_defense.events.DebuffImmune;
+
+import static world.maryt.wheelchair_defense.util.DebuffUtils.initBuffCache;
 
 @Mod(WheelChairDefense.MOD_ID)
 public class WheelChairDefense {
     public static final String MOD_ID = "wheelchair_defense";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     @SuppressWarnings("removal")
     public WheelChairDefense() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -29,9 +32,11 @@ public class WheelChairDefense {
 
         // Event Handlers
         MinecraftForge.EVENT_BUS.register(DamageMimicking.class);
+        MinecraftForge.EVENT_BUS.register(DebuffImmune.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        initBuffCache();
         LOGGER.info("Cheer up! We believe you're The Only Champ forever!");
     }
 
